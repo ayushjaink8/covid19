@@ -1,5 +1,6 @@
 {
   "name": "covid19-cases",
+  "homepage": "https://ayushjaink8.github.io/covid19",
   "version": "0.1.0",
   "private": true,
   "homepage": "https://anshuman301.github.io/covid19-cases",
@@ -18,7 +19,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "deploy": "gh-pages -b master -d build"
   },
   "eslintConfig": {
     "extends": "react-app"
