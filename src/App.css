@@ -1,0 +1,21 @@
+body {
+  background-image: url("./components/background.jpg");
+  background-size: cover;
+  background-size: no-repeat;
+}
+
+.heading {
+  text-shadow: 1.5px 1.5px #f1ff5c;
+  transform: scale(1.3);
+  margin: 3% 15%;
+  text-align: center;
+}
+.App {
+  width: 95%;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  align-items: center;
+  font-family: cursive, "Gill Sans", "Gill Sans MT", "Trebuchet MS",
+    sans-serif;
+}
