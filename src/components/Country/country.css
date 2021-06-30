@@ -17,11 +17,11 @@
   ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
   border-radius: 10px;
-  transition: all 0.5s ease-in-out;
+  transition: all 0.2s ease-in-out;
   cursor: pointer;
 }
 .country:hover {
-  transform: scale(1.08);
+  transform: scale(1.05);
   box-shadow: 0 0.5em 0.5em -0.4em #f1ff5c;
 }
 .country > img {
@@ -39,4 +39,8 @@
   width: 95%;
   text-align: center;
   margin: 10%;
+}
+
+.flagImage{
+  margin: 1em;
 }

@@ -1,50 +1,62 @@
 import React from "react";
-import logo from "./logo.svg";
 import "./App.css";
 import CountryList from "./components/CountryList/CountryList";
 import SearchBox from "./components/SearchBox/SearchBox";
-import background from "./components/background.jpg";
+// import background from "./components/background.jpg";
 
 class App extends React.Component {
+
   constructor() {
     super();
     this.state = {
       countries: [],
       stats: [],
-      searchField: "",
+      searchField: '',
     };
   }
   async componentDidMount() {
-    const resp = await fetch("https://api.covid19api.com/countries");
+    const resp = await fetch("https://covid-19.dataflowkit.com/v1");
     const countries = await resp.json();
     this.setState({ countries });
     this.state.countries.forEach(async (country) => {
       const resp = await fetch(
-        `https://api.covid19api.com/total/country/${country.Slug}`
+        `https://covid-19.dataflowkit.com/v1/${country.Country_text}`
       );
       const data = await resp.json();
-      if (data.length)
+      console.log(country.Country_text,data);
+      // if (country.Country_text!=undefined)
         this.setState((prevState) => ({
           stats: prevState.stats.concat({
             ...data[data.length - 1],
-            CountryCode: country.ISO2,
+            Country_text: country.Country_text || '',
+            active: String(parseInt(String(country['Total Cases_text']).split(',').join('')) - parseInt(String(country['Total Deaths_text']).split(',').join('')) - parseInt(String(country['Total Recovered_text']).split(',').join(''))).replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ","),
+            confirmed: country['Total Cases_text'],
+            deaths: country['Total Deaths_text'],
+            recovered: country['Total Recovered_text'],
           }),
         }));
     });
+    // console.log("cdm: ",this.state.stats)
   }
+
   handleChange = (e) => {
     this.setState({ searchField: e.target.value });
   };
+
   render() {
-    
     const { stats, searchField } = this.state;
-    const filteredCountries = stats.filter((country) =>
-      country.Country.toLowerCase().includes(searchField.toLowerCase())
-    );
+
+    const filteredCountries = stats.filter((country) => {
+      if(searchField===''){
+        return true;
+      }
+      else{
+        return country.Country_text.toLowerCase().includes(searchField.toLowerCase());
+      }
+    });
     return (
-      
       <div className="App">
-        <h1 class="heading">CoVID-19 Stats Web App</h1>
+        <h1 className="heading">CoVID-19 Stats Web App</h1>
         <SearchBox
           placeholder="Enter country name ..."
           handleChange={this.handleChange}
