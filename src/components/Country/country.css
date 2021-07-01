@@ -41,6 +41,13 @@
   margin: 10%;
 }
 
+@media screen and (max-width: 543px) {
+  .country{
+    margin-left: 5%;
+    width: 90%;
+  }
+}
+
 .flagImage{
   margin: 1em;
 }
