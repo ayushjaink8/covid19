@@ -1,9 +1,3 @@
-body {
-  background-image: url("./components/background.jpg");
-  background-size: cover;
-  background-size: no-repeat;
-}
-
 .heading {
   text-shadow: 1.5px 1.5px #f1ff5c;
   transform: scale(1.3);

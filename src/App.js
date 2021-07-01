@@ -2,6 +2,7 @@ import React from "react";
 import "./App.css";
 import CountryList from "./components/CountryList/CountryList";
 import SearchBox from "./components/SearchBox/SearchBox";
+import Bg from "./components/Background/Bg";
 // import background from "./components/background.jpg";
 
 class App extends React.Component {
@@ -55,14 +56,17 @@ class App extends React.Component {
       }
     });
     return (
-      <div className="App">
-        <h1 className="heading">CoVID-19 Stats Web App</h1>
-        <SearchBox
-          placeholder="Enter country name ..."
-          handleChange={this.handleChange}
-        />
-        <CountryList stats={filteredCountries} />
-      </div>
+      <>
+        <Bg/>
+        <div className="App">
+          <h1 className="heading">CoVID-19 Stats Web App</h1>
+          <SearchBox
+            placeholder="Enter country name ..."
+            handleChange={this.handleChange}
+          />
+          <CountryList stats={filteredCountries} />
+        </div>
+      </>
     );
   }
 }
