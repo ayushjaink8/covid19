@@ -3,6 +3,7 @@ import "./App.css";
 import CountryList from "./components/CountryList/CountryList";
 import SearchBox from "./components/SearchBox/SearchBox";
 import Bg from "./components/Background/Bg";
+import FeedbackButton from "./components/Feedback/FeedbackButton";
 // import background from "./components/background.jpg";
 
 class App extends React.Component {
@@ -58,6 +59,7 @@ class App extends React.Component {
     return (
       <>
         <Bg/>
+        <FeedbackButton/>
         <div className="App">
           <h1 className="heading">CoVID-19 Stats Web App</h1>
           <SearchBox
