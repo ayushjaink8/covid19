@@ -15,7 +15,7 @@ npm run build                     # to build the application
 
 npm start                         # to start the server
 
-npm run deploy                     # to deploy to gh-pages
+npm run deploy                    # to deploy to gh-pages
 
 
 

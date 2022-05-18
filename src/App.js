@@ -48,7 +48,7 @@ class App extends React.Component {
           http.get("https://ayushjain-forms.herokuapp.com/");
       }, 900000); // every 15 minutes (900000)
     } catch {
-      console.log('cant say');
+      console.log('can\'t say');
     }
   }
 
