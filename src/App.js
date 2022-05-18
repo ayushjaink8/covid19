@@ -16,6 +16,7 @@ class App extends React.Component {
       searchField: '',
     };
   }
+
   async componentDidMount() {
     const resp = await fetch("https://covid-19.dataflowkit.com/v1");
     const countries = await resp.json();
@@ -25,20 +26,30 @@ class App extends React.Component {
         `https://covid-19.dataflowkit.com/v1/${country.Country_text}`
       );
       const data = await resp.json();
-      console.log(country.Country_text,data);
+      // console.log(country.Country_text,data);
       // if (country.Country_text!=undefined)
-        this.setState((prevState) => ({
-          stats: prevState.stats.concat({
-            ...data[data.length - 1],
-            Country_text: country.Country_text || '',
-            active: String(parseInt(String(country['Total Cases_text']).split(',').join('')) - parseInt(String(country['Total Deaths_text']).split(',').join('')) - parseInt(String(country['Total Recovered_text']).split(',').join(''))).replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ","),
-            confirmed: country['Total Cases_text'],
-            deaths: country['Total Deaths_text'],
-            recovered: country['Total Recovered_text'],
-          }),
-        }));
+      this.setState((prevState) => ({
+        stats: prevState.stats.concat({
+          ...data[data.length - 1],
+          Country_text: country.Country_text || '',
+          active: String(parseInt(String(country['Total Cases_text']).split(',').join('')) - parseInt(String(country['Total Deaths_text']).split(',').join('')) - parseInt(String(country['Total Recovered_text']).split(',').join(''))).replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ","),
+          confirmed: country['Total Cases_text'],
+          deaths: country['Total Deaths_text'],
+          recovered: country['Total Recovered_text'],
+        }),
+      }));
     });
-    // console.log("cdm: ",this.state.stats)
+    
+    // Simple GET request to activate dynos for our feedback application
+    // deployed on heroku.
+    try{
+      var http = require("http");
+      setInterval(function() {
+          http.get("https://ayushjain-forms.herokuapp.com/");
+      }, 900000); // every 15 minutes (900000)
+    } catch {
+      console.log('cant say');
+    }
   }
 
   handleChange = (e) => {

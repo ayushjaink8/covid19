@@ -3,12 +3,12 @@ import './feedbackButton.css';
 const FeedbackButton = () =>{
 
   var onClickButton = (e) =>{
-    var redirect_link = "https://ayushjainforms.herokuapp.com/";
+    var redirect_link = "https://ayushjain-forms.herokuapp.com/";
     window.open(redirect_link, "_blank");
   }
     return(
         <div id='feedback'>
-            <div onClick={onClickButton} class="tooltip">
+            <div onClick={onClickButton} className="tooltip">
               <button class="btn">
                 <span>
                   Feedback
