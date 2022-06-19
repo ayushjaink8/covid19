@@ -1,0 +1,3 @@
+new changes
+different changes
+making changes to create merge conflicts.
